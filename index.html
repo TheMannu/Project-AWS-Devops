@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route Finder</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .ui-autocomplete {
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .ui-menu-item {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        .ui-menu-item:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Find Route</h1>
+    <form id="routeForm" action="#" method="post" onsubmit="showRoute(); return false;">
+        <label for="originInput">Origin:</label>
+        <input type="text" name="origin" id="originInput" placeholder="Enter origin location...">
+        <br><br>
+        <label for="destinationInput">Destination:</label>
+        <input type="text" name="destination" id="destinationInput" placeholder="Enter destination location...">
+        <br><br>
+        <input type="submit" value="Find Route">
+    </form>
+
+    <!-- Google Maps API Script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            var availableCities = [
+                "Mumbai",
+                "Delhi",
+                "Kolkata",
+                "Bangalore",
+                "Chennai",
+                "Hyderabad",
+                "Pune",
+                "Ahmedabad",
+                "Surat",
+                "Visakhapatnam"
+            ];
+            $("#originInput, #destinationInput").autocomplete({
+                source: availableCities
+            });
+        });
+
+        function showRoute() {
+            var origin = document.getElementById("originInput").value;
+            var destination = document.getElementById("destinationInput").value;
+            var url = "https://www.google.com/maps/dir/?api=1&origin=" + encodeURIComponent(origin) + "&destination=" + encodeURIComponent(destination);
+            window.open(url, "_blank");
+        }
+    </script>
+</body>
+</html>
