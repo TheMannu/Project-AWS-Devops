@@ -158,4 +158,4 @@ Our project involves a simple static web application that finds routes between c
 
 ### Conclusion
 
-We've successfully created a CI/CD pipeline for a static web application using AWS DevOps services. This pipeline automates the deployment process, ensuring consistent and reliable deployments. If you enjoyed this tutorial, please like and subscribe to Dosmaster for more AWS and DevOps content!
+We've successfully created a CI/CD pipeline for a static web application using AWS DevOps services. This pipeline automates the deployment process, ensuring consistent and reliable deployments.
